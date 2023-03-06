@@ -8,8 +8,12 @@ async function deleteBook(req, res) {
 
   if (!book) {
     const message = 'The book with the given ID was not found.';
+    const statusCode = 404;
 
-    res.status(404).send(message);
+    res.status(statusCode).json({
+      statusCode,
+      message,
+    });
 
     return;
   }

@@ -7,7 +7,12 @@ async function postBook(req, res) {
   const { error } = validateBook(body);
 
   if (error) {
-    res.status(400).send(error.details[0].message);
+    const statusCode = 400;
+
+    res.status(statusCode).json({
+      statusCode,
+      message: error.details[0].message,
+    });
 
     return;
   }

@@ -7,7 +7,12 @@ async function putBook(req, res) {
   const { error } = validateBook(body);
 
   if (error) {
-    res.status(400).send(error.details[0].message);
+    const statusCode = 400;
+
+    res.status(statusCode).json({
+      statusCode,
+      message: error.details[0].message,
+    });
 
     return;
   }
@@ -25,8 +30,12 @@ async function putBook(req, res) {
 
   if (!book) {
     const message = 'The book with the given ID was not found.';
+    const statusCode = 404;
 
-    res.status(404).send(message);
+    res.status(statusCode).json({
+      statusCode,
+      message,
+    });
 
     return;
   }
