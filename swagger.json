@@ -217,10 +217,14 @@
       "required": ["title", "author"],
       "properties": {
         "title": {
-          "type": "string"
+          "type": "string",
+          "minLength": 3,
+          "maxLength":255
         },
         "author": {
-          "type": "string"
+          "type": "string",
+          "minLength": 3,
+          "maxLength":255
         }
       }
     },
@@ -238,20 +242,6 @@
           "$ref": "#/definitions/BookDetails"
         }
       ]
-    },
-    "Task": {
-      "type": "object",
-      "properties": {
-        "task": {
-          "type": "string"
-        },
-        "assignee": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string"
-        }
-      }
     },
     "InvalidResponse": {
       "type": "object",
